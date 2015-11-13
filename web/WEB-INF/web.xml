@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <filter>
+        <filter-name>SessionFilter</filter-name>
+        <filter-class>filters.SessionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SessionFilter</filter-name>
+        <url-pattern>/jsp/basket.jsp</url-pattern>
+        <url-pattern>/jsp/catalog.jsp</url-pattern>
+        <url-pattern>/jsp/login.jsp</url-pattern>
+        <url-pattern>/jsp/menu.jsp</url-pattern>
+        <url-pattern>/jsp/register.jsp</url-pattern>
+        <url-pattern>/jsp/reservation.jsp</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <listener>
+        <description>HttpSessionListener</description>
+        <listener-class>listeners.ListenerHolidaysSession</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>ServletHolidaysLogin</servlet-name>
+        <servlet-class>servlets.ServletHolidaysLogin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ServletHolidaysLuckyNumber</servlet-name>
+        <servlet-class>servlets.ServletHolidaysLuckyNumber</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletHolidaysLogin</servlet-name>
+        <url-pattern>/ServletHolidaysLogin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletHolidaysLuckyNumber</servlet-name>
+        <url-pattern>/ServletHolidaysLuckyNumber</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>1</session-timeout>
+    </session-config>
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>resource_bundle</param-value>
+</context-param>
+</web-app>
